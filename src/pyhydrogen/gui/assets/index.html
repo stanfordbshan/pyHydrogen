@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pyHydrogen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.plot.ly/plotly-2.35.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header id="header">
+            <div class="header-content">
+                <h1>pyHydrogen</h1>
+                <p class="subtitle">Hydrogen Atom Wavefunction Visualiser</p>
+            </div>
+        </header>
+
+        <!-- Controls Bar -->
+        <div id="controls">
+            <div class="control-group">
+                <label for="n-select">n <span class="label-hint">(principal)</span></label>
+                <select id="n-select">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="l-select">l <span class="label-hint">(angular)</span></label>
+                <select id="l-select">
+                    <option value="0" selected>0 (s)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="m-select">m <span class="label-hint">(magnetic)</span></label>
+                <select id="m-select">
+                    <option value="0" selected>0</option>
+                </select>
+            </div>
+
+            <button id="compute-btn">Compute</button>
+
+            <div id="info-panel">
+                <span id="orbital-label">(1, 0, 0) &mdash; 1s</span>
+                <span id="status-text">Initialising&hellip;</span>
+            </div>
+        </div>
+
+        <!-- Plot Grid -->
+        <div id="plots-container">
+            <div id="isosurface-plot" class="plot-panel"></div>
+            <div id="radial-plot" class="plot-panel"></div>
+            <div id="energy-plot" class="plot-panel"></div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

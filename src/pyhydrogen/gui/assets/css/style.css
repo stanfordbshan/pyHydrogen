@@ -1,0 +1,232 @@
+/* ==========================================================================
+   pyHydrogen — Dark Theme Stylesheet
+   Palette:
+     Background   #1a1a2e
+     Surface      #16213e
+     Controls     #0f3460
+     Accent       #e94560
+     Text         #e0e0e0 / #a0a0a0
+     Border       #2a2a4a
+   ========================================================================== */
+
+/* --- Reset & Base -------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    color: #e0e0e0;
+    background-color: #1a1a2e;
+}
+
+/* --- App Layout ---------------------------------------------------------- */
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* --- Header -------------------------------------------------------------- */
+
+#header {
+    padding: 10px 24px;
+    background-color: #16213e;
+    border-bottom: 2px solid #e94560;
+    flex-shrink: 0;
+}
+
+#header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    display: inline;
+}
+
+.subtitle {
+    display: inline;
+    margin-left: 12px;
+    font-size: 13px;
+    color: #a0a0a0;
+    font-weight: 400;
+}
+
+/* --- Controls Bar -------------------------------------------------------- */
+
+#controls {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 10px 24px;
+    background-color: #0f3460;
+    border-bottom: 1px solid #2a2a4a;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.control-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e0e0e0;
+    white-space: nowrap;
+}
+
+.label-hint {
+    font-weight: 400;
+    color: #a0a0a0;
+    font-size: 11px;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #16213e;
+    color: #e0e0e0;
+    border: 1px solid #2a2a4a;
+    border-radius: 4px;
+    padding: 5px 28px 5px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+
+    /* Custom dropdown arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23a0a0a0'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+
+select:hover,
+select:focus {
+    border-color: #e94560;
+}
+
+/* --- Compute Button ------------------------------------------------------ */
+
+#compute-btn {
+    background-color: #e94560;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#compute-btn:hover {
+    background-color: #d63451;
+}
+
+#compute-btn:active {
+    transform: scale(0.97);
+}
+
+#compute-btn:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- Info Panel ---------------------------------------------------------- */
+
+#info-panel {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#orbital-label {
+    font-family: "Consolas", "SF Mono", monospace;
+    font-size: 13px;
+    color: #e94560;
+    font-weight: 600;
+}
+
+#status-text {
+    font-size: 12px;
+    color: #a0a0a0;
+    min-width: 100px;
+    text-align: right;
+}
+
+/* --- Plot Grid ----------------------------------------------------------- */
+
+#plots-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 6px;
+    padding: 6px;
+    min-height: 0;            /* allow flex children to shrink */
+}
+
+#isosurface-plot {
+    grid-row: 1 / 3;         /* spans both rows */
+    grid-column: 1;
+}
+
+#radial-plot {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#energy-plot {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.plot-panel {
+    background-color: #16213e;
+    border-radius: 6px;
+    border: 1px solid #2a2a4a;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* --- Plotly overrides ---------------------------------------------------- */
+/* Make sure Plotly fills its container */
+
+.plot-panel .plotly {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Scrollbar styling (Webkit) */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2a2a4a;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3a3a5a;
+}
